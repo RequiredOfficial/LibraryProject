@@ -30,3 +30,24 @@ class Library:
                 return book
         return None
 
+    def borrow_book(self, title):
+        book = self.find_book(title)
+        if book:
+            if book.available:
+                book.available = False
+                print(f"Книга '{title}' выдана.")
+            else:
+                print(f"Книга '{title}' уже выдана.")
+        else:
+            print(f"Книга '{title}' не найдена.")
+    
+    def return_book(self, title):
+        book = self.find_book(title)
+        if book:
+            if not book.available:
+                book.available = True
+                print(f"Книга '{title}' возвращена.")
+            else:
+                print(f"Книга '{title}' уже в наличии.")
+        else:
+            print(f"Книга '{title}' не найдена.")
