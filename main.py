@@ -1,3 +1,15 @@
+from library import Library
+
+def validate_isbn(isbn):
+    return len(isbn.strip()) > 0 and isbn.replace("-", "").isdigit()
+
+def get_valid_isbn():
+    while True:
+        isbn = input("ISBN: ").strip()
+        if validate_isbn(isbn):
+            return isbn
+        print("Ошибка: ISBN должен содержать только цифры и дефисы.")
+        
 def main():
     library = Library()
     
@@ -38,6 +50,24 @@ def main():
             else:
                 print("Книга не найдена.")
 
-
+        elif choice == "4":
+            title = input("Введите название книги для выдачи: ").strip()
+            library.borrow_book(title)
         
+        elif choice == "5":
+            title = input("Введите название книги для возврата: ").strip()
+            library.return_book(title)
+        
+        elif choice == "6":
+            title = input("Введите название книги для удаления: ").strip()
+            library.remove_book(title)
+        
+        elif choice == "7":
+            print("До свидания!")
+            break
+        
+        else:
+            print("Неверный выбор. Попробуйте снова.")
 
+if __name__ == "__main__":
+    main()
