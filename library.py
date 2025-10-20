@@ -23,3 +23,10 @@ class Library:
         else:
             for book in self.books:
                 print(book)
+
+     def find_book(self, title):
+        for book in self.books:
+            if book.title.lower() == title.lower():
+                return book
+        return None
+
